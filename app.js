@@ -63,12 +63,6 @@ const sessionOptions ={
     httpOnly: true,
 };
 
-// app.get("/", (req,res)=>{
-//     res.send("root is working");
-//     });
-
-
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -98,8 +92,7 @@ app.all("*",(req,res,next)=>{
 app.use((err,req,res,next)=>{
         let{statusCode=500,message="something went wrong!"}= err;
         res.status(statusCode).render("error.ejs", {message});
-        // res.status(statusCode).send(message);
-    });
+});
     
 app.listen(8080,()=>{
     console.log("app is listening to port 8080");
